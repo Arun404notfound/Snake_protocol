@@ -29,7 +29,7 @@
                 <div class="overlay-content">
                     <h2 id="overlay-title">SYSTEM READY</h2>
                     <p id="overlay-msg">CHOOSE YOUR SNAKE COLOR</p>
-                    <div>
+                    <div id="color-selection" class="overlay-buttons">
                         <button id="red-btn">RED</button>
                         <button id="blue-btn">BLUE</button>
                     </div>
@@ -40,8 +40,18 @@
         <div class="controls-hint">
             <span>WASD or ARROWS to Navigate</span>
         </div>
+
+        <div class="page-nav">
+            <button id="home-btn">HOME</button>
+        </div>
     </div>
     <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
     <script src="game.js"></script>
+    <script>
+        const homeBtn = document.getElementById('home-btn');
+        homeBtn.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>
