@@ -5,6 +5,7 @@ const blueScoreVal = document.getElementById("blueScore");
 const overlay = document.getElementById("overlay");
 const redBtn = document.getElementById("red-btn");
 const blueBtn = document.getElementById("blue-btn");
+const colorSelection = document.getElementById("color-selection");
 
 let gridSize = 20;
 let userColor, computerColor;
@@ -25,11 +26,14 @@ roomCode = urlParams.get('room');
 isHost = urlParams.get('host') === 'true';
 
 if (mode === 'multiplayer') {
+    if (colorSelection) {
+        colorSelection.style.display = 'none';
+    }
     setupMultiplayer();
 }
 
 function setupMultiplayer() {
-    peer = new Peer();
+    peer = isHost ? new Peer(roomCode) : new Peer();
 
     peer.on('open', (id) => {
         if (isHost) {
@@ -42,7 +46,7 @@ function setupMultiplayer() {
             conn = peer.connect(roomCode);
             setupConnection(conn);
             document.getElementById("overlay-title").innerText = "CONNECTING...";
-            document.getElementById("overlay-msg").innerText = `Joining room: ${roomCode}`;
+            document.getElementById("overlay-msg").innerText = `Joining room: ${roomCode}...`;
             overlay.style.display = "flex";
         }
     });
@@ -51,9 +55,6 @@ function setupMultiplayer() {
         if (isHost) {
             conn = connection;
             setupConnection(conn);
-            overlay.style.display = "none";
-            // Start game as host (red)
-            init('red');
         }
     });
 }
@@ -62,9 +63,20 @@ function setupConnection(connection) {
     conn = connection;
     conn.on('open', () => {
         if (!isHost) {
-            overlay.style.display = "none";
-            // Start game as guest (blue)
-            init('blue');
+            document.getElementById("overlay-title").innerText = "CONNECTED";
+            document.getElementById("overlay-msg").innerText = "Waiting for host to start the match...";
+        }
+        if (isHost) {
+            // Host starts when guest connects
+            document.getElementById("overlay-title").innerText = "OPPONENT CONNECTED";
+            document.getElementById("overlay-msg").innerText = "Starting game now...";
+            setTimeout(() => {
+                if (conn && conn.open) {
+                    conn.send({type: 'start'});
+                }
+                overlay.style.display = "none";
+                init('red');
+            }, 800);
         }
     });
 
@@ -80,6 +92,9 @@ function setupConnection(connection) {
             if (data.color === 'red') redScore = data.score;
             else blueScore = data.score;
             updateScores();
+        } else if (data.type === 'start') {
+            overlay.style.display = "none";
+            init('blue');
         } else if (data.type === 'gameOver') {
             gameOver(data.message);
         }
@@ -410,5 +425,7 @@ window.addEventListener("keydown", e => {
     }
 });
 
-redBtn.addEventListener("click", () => init('red'));
-blueBtn.addEventListener("click", () => init('blue'));
+if (mode !== 'multiplayer') {
+    redBtn.addEventListener("click", () => init('red'));
+    blueBtn.addEventListener("click", () => init('blue'));
+}
