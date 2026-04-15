@@ -56,39 +56,94 @@ body {
 .menu button {
     padding: 15px 40px;
     font-size: 1.2rem;
-    min-width: 250px;
+    min-width: 260px;
+    border-radius: 10px;
 }
 
 .friend-menu {
     text-align: center;
-    max-width: 400px;
+    max-width: 440px;
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0,212,255,0.15);
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.35);
 }
 
 .friend-menu h2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.friend-subtitle {
+    margin: 0 0 20px;
+    opacity: 0.75;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.page-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.page-nav button {
+    background: rgba(0, 212, 255, 0.12);
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    color: var(--primary);
+    padding: 10px 24px;
+    border-radius: 10px;
+    min-width: 120px;
+    margin-bottom: 10px;
+}
+
+.page-nav button:hover {
+    background: var(--primary);
+    color: #000;
 }
 
 .room-options {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
     align-items: center;
+}
+
+.room-options button,
+.join-room button,
+#back-btn {
+    background: rgba(0, 212, 255, 0.12);
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    color: var(--primary);
+    padding: 14px 28px;
+    border-radius: 10px;
+    min-width: 240px;
+}
+
+.room-options button:hover,
+.join-room button:hover,
+#back-btn:hover {
+    background: var(--primary);
+    color: #000;
 }
 
 .join-room {
     display: flex;
     gap: 10px;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .join-room input {
-    padding: 10px;
-    border: 1px solid var(--primary);
-    background: var(--glass);
+    padding: 12px 14px;
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    background: rgba(255,255,255,0.05);
     color: var(--primary);
     text-transform: uppercase;
     font-family: inherit;
-    width: 150px;
+    width: 190px;
+    border-radius: 10px;
 }
 
 .join-room input::placeholder {
@@ -97,8 +152,9 @@ body {
 }
 
 #back-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
+    margin-top: 24px;
+    padding: 12px 24px;
+    min-width: auto;
 }
 
 .hud {
