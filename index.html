@@ -13,17 +13,22 @@
             <div class="status-indicator"></div>
         </div>
 
+        <div class="page-nav">
+            <button id="home-btn">HOME</button>
+        </div>
+
         <div class="menu">
             <button id="vs-computer-btn">PLAY VS COMPUTER</button>
-            <button id="challenge-friend-btn">CHALLENGE A FRIEND</button>
+            <button id="challenge-friend-btn">CHALLENGE A SNAKE</button>
         </div>
 
         <div id="friend-menu" class="friend-menu" style="display: none;">
-            <h2>CHALLENGE A FRIEND</h2>
+            <h2>CHALLENGE A SNAKE</h2>
+            <p class="friend-subtitle">Two-player mode with a shared room code</p>
             <div class="room-options">
                 <button id="create-room-btn">CREATE ROOM</button>
                 <div class="join-room">
-                    <input type="text" id="room-code-input" placeholder="Enter Room Code">
+                    <input type="text" id="room-code-input" placeholder="Enter room code">
                     <button id="join-room-btn">JOIN ROOM</button>
                 </div>
             </div>
@@ -64,6 +69,11 @@
         backBtn.addEventListener("click", () => {
             friendMenu.style.display = "none";
             document.querySelector(".menu").style.display = "flex";
+        });
+
+        const homeBtn = document.getElementById('home-btn');
+        homeBtn.addEventListener('click', () => {
+            window.location.href = 'index.html';
         });
     </script>
 </body>
