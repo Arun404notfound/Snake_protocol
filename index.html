@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.N.A.K.E. // OS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title-section">
+            <h1>SNAKE_PROTOCOL</h1>
+            <div class="status-indicator"></div>
+        </div>
+
+        <div class="menu">
+            <button id="vs-computer-btn">PLAY VS COMPUTER</button>
+            <button id="challenge-friend-btn">CHALLENGE A FRIEND</button>
+        </div>
+
+        <div id="friend-menu" class="friend-menu" style="display: none;">
+            <h2>CHALLENGE A FRIEND</h2>
+            <div class="room-options">
+                <button id="create-room-btn">CREATE ROOM</button>
+                <div class="join-room">
+                    <input type="text" id="room-code-input" placeholder="Enter Room Code">
+                    <button id="join-room-btn">JOIN ROOM</button>
+                </div>
+            </div>
+            <button id="back-btn">BACK</button>
+        </div>
+    </div>
+
+    <script>
+        const vsComputerBtn = document.getElementById("vs-computer-btn");
+        const challengeFriendBtn = document.getElementById("challenge-friend-btn");
+        const friendMenu = document.getElementById("friend-menu");
+        const createRoomBtn = document.getElementById("create-room-btn");
+        const joinRoomBtn = document.getElementById("join-room-btn");
+        const roomCodeInput = document.getElementById("room-code-input");
+        const backBtn = document.getElementById("back-btn");
+
+        vsComputerBtn.addEventListener("click", () => {
+            window.location.href = "game.html?mode=computer";
+        });
+
+        challengeFriendBtn.addEventListener("click", () => {
+            document.querySelector(".menu").style.display = "none";
+            friendMenu.style.display = "block";
+        });
+
+        createRoomBtn.addEventListener("click", () => {
+            const roomCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+            window.location.href = `game.html?mode=multiplayer&room=${roomCode}&host=true`;
+        });
+
+        joinRoomBtn.addEventListener("click", () => {
+            const roomCode = roomCodeInput.value.trim().toUpperCase();
+            if (roomCode) {
+                window.location.href = `game.html?mode=multiplayer&room=${roomCode}&host=false`;
+            }
+        });
+
+        backBtn.addEventListener("click", () => {
+            friendMenu.style.display = "none";
+            document.querySelector(".menu").style.display = "flex";
+        });
+    </script>
+</body>
+</html>

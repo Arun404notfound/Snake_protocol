@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.N.A.K.E. // OS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="hud">
+            <div class="stat-box">
+                <span class="label">RED SCORE</span>
+                <span id="redScore" class="value">000</span>
+            </div>
+            <div class="title-box">
+                <h1>SNAKE_PROTOCOL</h1>
+                <div class="status-indicator"></div>
+            </div>
+            <div class="stat-box">
+                <span class="label">BLUE SCORE</span>
+                <span id="blueScore" class="value">000</span>
+            </div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="gameCanvas" width="600" height="600"></canvas>
+            <div id="overlay" class="overlay">
+                <div class="overlay-content">
+                    <h2 id="overlay-title">SYSTEM READY</h2>
+                    <p id="overlay-msg">CHOOSE YOUR SNAKE COLOR</p>
+                    <div>
+                        <button id="red-btn">RED</button>
+                        <button id="blue-btn">BLUE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-hint">
+            <span>WASD or ARROWS to Navigate</span>
+        </div>
+    </div>
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

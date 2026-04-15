@@ -1,0 +1,198 @@
+:root {
+    --primary: #00d4ff;
+    --secondary: #ff0055;
+    --bg-dark: #050a0f;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(0, 212, 255, 0.3);
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(circle at 50% 50%, #102030 0%, #050a0f 100%);
+    color: var(--primary);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.title-section {
+    text-align: center;
+}
+
+.title-section h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.status-indicator {
+    height: 3px;
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+    margin-top: 5px;
+    animation: pulse 2s infinite;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.menu button {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    min-width: 250px;
+}
+
+.friend-menu {
+    text-align: center;
+    max-width: 400px;
+}
+
+.friend-menu h2 {
+    margin-bottom: 20px;
+}
+
+.room-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.join-room {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.join-room input {
+    padding: 10px;
+    border: 1px solid var(--primary);
+    background: var(--glass);
+    color: var(--primary);
+    text-transform: uppercase;
+    font-family: inherit;
+    width: 150px;
+}
+
+.join-room input::placeholder {
+    color: var(--primary);
+    opacity: 0.7;
+}
+
+#back-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+}
+
+.hud {
+    display: flex;
+    justify-content: space-between;
+    width: 620px;
+    align-items: center;
+}
+
+.stat-box {
+    background: var(--glass);
+    border-left: 3px solid var(--primary);
+    padding: 10px 20px;
+    backdrop-filter: blur(5px);
+}
+
+.label { font-size: 0.6rem; display: block; opacity: 0.7; }
+.value { font-size: 1.5rem; font-weight: bold; text-shadow: 0 0 10px var(--primary); }
+
+.title-box h1 { font-size: 1rem; margin: 0; }
+.status-indicator {
+    height: 3px;
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+    margin-top: 5px;
+    animation: pulse 2s infinite;
+}
+
+.canvas-wrapper {
+    position: relative;
+    border: 1px solid var(--border);
+    padding: 10px;
+    background: var(--glass);
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+
+canvas {
+    background: #000;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(5, 10, 15, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+}
+
+button {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 10px 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 20px var(--primary);
+}
+
+#red-btn {
+    background: #ff0055;
+    color: white;
+    border: 1px solid #ff0055;
+}
+
+#red-btn:hover {
+    background: white;
+    color: #ff0055;
+}
+
+#blue-btn {
+    background: #00d4ff;
+    color: black;
+    border: 1px solid #00d4ff;
+}
+
+#blue-btn:hover {
+    background: black;
+    color: #00d4ff;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
